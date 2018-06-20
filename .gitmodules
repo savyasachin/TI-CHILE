@@ -1,0 +1,4 @@
+[submodule "umazabal/ofssubrepo"]
+	path = umazabal/ofssubrepo
+	url = git@github.com:umazabal/ofssubrepo.git
+	branch = master
