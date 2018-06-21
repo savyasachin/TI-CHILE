@@ -1,0 +1,4 @@
+[submodule "Office-365-Odoo"]
+	path = Office-365-Odoo
+	url = git@github.com:umazabal/Office-365-Odoo.git
+	branch = 10.0
