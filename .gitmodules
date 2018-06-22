@@ -2,3 +2,8 @@
 	path = umazabal/ofssubrepo
 	url = git@github.com:umazabal/ofssubrepo.git
 	branch = master
+
+[submodule "umazabal/TI-CHILE"]
+	path = umazabal/TI-CHILE
+	url = git@github.com:umazabal/TI-CHILE.git
+	branch = office
