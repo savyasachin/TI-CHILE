@@ -1,35 +1,13 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
-#
-#    Odoo, Open Source Management Solution Chilean Payroll
-#
-#    Copyright (c) 2017 Konos
-#    http://konos.cl
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
-
 import time
 from odoo import models, api
-
+from odoo.exceptions import UserError, ValidationError
 
 class report_hr_salary_employee_bymonth(models.AbstractModel):
     _name = 'report.l10n_cl_hr.report_hrsalarybymonth'
+    _description = 'Monthly Salary Report'
 
     @api.model
-    def get_report_values(self, docids, data=None):
+    def _get_report_values(self, docids, data=None):
         if not data.get('form') or not self.env.context.get('active_model') or not self.env.context.get('active_id'):
             raise UserError(_("Form content is missing, this report cannot be printed."))
 
@@ -85,12 +63,16 @@ group by r.name, p.date_to''', (cod_id, mes, ano,))
         try:
             emp_salary.append(max[0])
         except:
-            emp_salary.append(0.00)
-
-
-            
-
+            emp_salary.append(0.00)  
         return emp_salary
+
+    def get_centro_costo(self, id):
+        valor = "01"
+        lineas = self.env['account.analytic.account']
+        detalle = lineas.search([('id','=',id)], limit=1)
+        if detalle:
+            valor = detalle.code
+        return valor  
 
     def get_analytic(self, form):
         emp_salary = []
@@ -154,13 +136,13 @@ group by r.name, p.date_to,emp.id''', (emp_id, cod_id, mes, ano,))
         cont = 0
 
         self.env.cr.execute(
-            '''select emp.id, emp.identification_id, emp.firstname, emp.middle_name, emp.last_name, emp.mothers_name
+            '''select emp.id, emp.identification_id, emp.firstname, emp.middle_name, emp.last_name, emp.mothers_name, r.analytic_account_id
 from hr_payslip as p left join hr_employee as emp on emp.id = p.employee_id
 left join hr_contract as r on r.id = p.contract_id
 where p.state = 'done'  and (to_char(p.date_to,'mm')=%s)
 and (to_char(p.date_to,'yyyy')=%s)
-group by emp.id, emp.name, emp.middle_name, emp.last_name, emp.mothers_name, emp.identification_id
-order by last_name''', (last_month, last_year,))
+group by emp.id, emp.name, emp.middle_name, emp.last_name, emp.mothers_name, emp.identification_id, r.analytic_account_id
+order by r.analytic_account_id, last_name''', (last_month, last_year,))
 
         id_data = self.env.cr.fetchall()
         if id_data is None:
@@ -171,12 +153,14 @@ order by last_name''', (last_month, last_year,))
             emp_salary.append(0.00)
         else:
             for index in id_data:
-                emp_salary.append(id_data[cont][0])
+                #0 CENTRO DE COSTO 1 RUT 2 PRIMER 3 SEGUNDO 4 APELLIDO 5 SEGUNDO APELLIDO 
+                emp_salary.append(self.get_centro_costo(id_data[cont][6]))
                 emp_salary.append(id_data[cont][1])
                 emp_salary.append(id_data[cont][2])
                 emp_salary.append(id_data[cont][3])
                 emp_salary.append(id_data[cont][4])
                 emp_salary.append(id_data[cont][5])
+                
                 emp_salary = self.get_worked_days(
                     form, id_data[cont][0], emp_salary, last_month, last_year)
                 emp_salary = self.get_salary(
@@ -205,6 +189,7 @@ order by last_name''', (last_month, last_year,))
                     last_year)
                 emp_salary = self.get_salary(
                     id_data[cont][0], emp_salary, 'HAB', last_month, last_year)
+                
 
                 cont = cont + 1
                 salary_list.append(emp_salary)
@@ -221,13 +206,13 @@ order by last_name''', (last_month, last_year,))
         cont = 0
 
         self.env.cr.execute(
-            '''select emp.id, emp.identification_id, emp.firstname, emp.middle_name, emp.last_name, emp.mothers_name
+            '''select emp.id, emp.identification_id, emp.firstname, emp.middle_name, emp.last_name, emp.mothers_name, r.analytic_account_id
 from hr_payslip as p left join hr_employee as emp on emp.id = p.employee_id
 left join hr_contract as r on r.id = p.contract_id
 where p.state = 'done'  and (to_char(p.date_to,'mm')=%s)
 and (to_char(p.date_to,'yyyy')=%s)
-group by emp.id, emp.name, emp.middle_name, emp.last_name, emp.mothers_name, emp.identification_id
-order by last_name''', (last_month, last_year))
+group by emp.id, emp.name, emp.middle_name, emp.last_name, emp.mothers_name, emp.identification_id, r.analytic_account_id
+order by r.analytic_account_id, last_name''', (last_month, last_year))
 
         id_data = self.env.cr.fetchall()
         if id_data is None:
@@ -238,12 +223,13 @@ order by last_name''', (last_month, last_year))
             emp_salary.append(0.00)
         else:
             for index in id_data:
-                emp_salary.append(id_data[cont][0])
+                emp_salary.append(self.get_centro_costo(id_data[cont][6]))
                 emp_salary.append(id_data[cont][1])
                 emp_salary.append(id_data[cont][2])
                 emp_salary.append(id_data[cont][3])
                 emp_salary.append(id_data[cont][4])
                 emp_salary.append(id_data[cont][5])
+                
                 emp_salary = self.get_worked_days(
                     form, id_data[cont][0], emp_salary, last_month, last_year)
                 emp_salary = self.get_salary(

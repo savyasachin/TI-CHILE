@@ -1,10 +1,5 @@
-
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 {
     'name': 'Chilean Payroll & Human Resources',
-    'category': 'Localization',
     'author': 'Konos',
     'website': 'http://konos.cl',
     'license': 'AGPL-3',
@@ -14,18 +9,17 @@
         ],
     'external_dependencies': {
         'python': [
-                'num2words',
+                'num2words'
                 ]
         },
-        'contributors': [
+    'contributors': [
         "Nelson Ramirez <info@konos.cl>",
         "Daniel Blanco Martin <daniel@blancomartin.com>",
         "Carlos Lopez Mite <celm1990@hotmail.com>",
         "Daniel Santibáñez Polanco <dsantibanez@globalresponse.cl>",
-        "Francisco Lorca <fcolorca1979@gmail.com>",
     ],
     'license': 'AGPL-3',
-    'version': '11.0.1.4.0',
+    'version': '12.0.1.0.4',
     'description': """
 Chilean Payroll & Human Resources.
 ==================================
@@ -43,8 +37,10 @@ Chilean Payroll & Human Resources.
     , ...
     Report
   """,
+    'category': 'Localization/Chile',
     'active': True,
     'data': [
+        'views/menu_root.xml',
         'views/hr_indicadores_previsionales_view.xml',
         'views/hr_salary_rule_view.xml',
         'views/hr_contract_view.xml',
@@ -58,6 +54,7 @@ Chilean Payroll & Human Resources.
         'views/hr_holiday_views.xml',
         'views/wizard_export_csv_previred_view.xml',
         'data/hr_salary_rule_category.xml',
+        'data/hr_centros_costos.xml',
         'data/l10n_cl_hr_indicadores.xml',
         'data/l10n_cl_hr_isapre.xml',
         'data/l10n_cl_hr_afp.xml',
