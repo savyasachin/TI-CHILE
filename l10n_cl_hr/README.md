@@ -35,7 +35,7 @@ https://youtu.be/6m9fuuCny7g
  - Daniel Blanco Martín <daniel@blancomartin.com>
  - Carlos Lopez Mite <celm1990@hotmail.com>
  - Daniel Santibáñez Polanco <dsantibanez@globalresponse.cl>
-
+ - Francisco Lorca <fcolorca1979@gmail.com>
 
  
 
@@ -47,7 +47,7 @@ Odoo - Chilean Payroll & Human Resources
 ========================================
 
 Personalización para manejo de Recursos Humanos y Remuneraciones en Chile
-Puede revisar la funcionalidad del este módulo en el siguiente video:
+Puede chequear la funcionalidad del este módulo en el siguiente video:
 https://youtu.be/6m9fuuCny7g
  
 ## Créditos
@@ -80,4 +80,4 @@ https://youtu.be/6m9fuuCny7g
  - Daniel Blanco Martín <daniel@blancomartin.com>
  - Carlos Lopez Mite <celm1990@hotmail.com>
  - Daniel Santibáñez Polanco <dsantibanez@globalresponse.cl>
-
+ - Francisco Lorca <fcolorca1979@gmail.com>

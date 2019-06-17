@@ -1,11 +1,47 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+# Odoo / OpenERP, Open Source Management Solution
+# Copyright (c) 2018 Konos
+# Nelson Ramírez Sánchez
+# http://konos.cl
+#
+# Derivative from Odoo / OpenERP / Tiny SPRL
+#
+# WARNING: This program as such is intended to be used by professional
+# programmers who take the whole responsability of assessing all potential
+# consequences resulting from its eventual inadequacies and bugs
+# End users who are looking for a ready-to-use solution with commercial
+# garantees and support are strongly adviced to contract a Free Software
+# Service Company
+#
+# This program is Free Software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+##############################################################################
+
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError
 import odoo.addons.decimal_precision as dp
 
 class hr_contract(models.Model):
+
     _inherit = 'hr.contract'
     _description = 'Employee Contract'
-
+    """
+    Employee contract allows to add different values in fields.
+    Fields are used in salary rule computation.
+    """
     afp_id = fields.Many2one('hr.afp', 'AFP')
     anticipo_sueldo = fields.Float('Anticipo de Sueldo',help="Anticipo De Sueldo Realizado Contablemente")
     carga_familiar = fields.Integer('Carga Simple',help="Carga familiar para el cálculo de asignación familiar simple")
@@ -14,8 +50,7 @@ class hr_contract(models.Model):
     colacion = fields.Float('Asig. Colación', help="Colación")
     isapre_id = fields.Many2one('hr.isapre', 'Nombre')
     isapre_cotizacion_uf = fields.Float('Cotización', digits=(6, 4),  help="Cotización Pactada")  
-    isapre_fun = fields.Char('Número de FUN',  help="Indicar N° Contrato de Salud a Isapre") 
-    isapre_cuenta_propia = fields.Boolean('Isapre Cuenta Propia')   
+    isapre_fun = fields.Char('Número de FUN',  help="Indicar N° Contrato de Salud a Isapre")    
     movilizacion = fields.Float('Asig. Movilización', help="Movilización")
     mutual_seguridad = fields.Boolean('Mutual Seguridad', default=True)
     otro_no_imp = fields.Float('Otros No Imponible', help="Otros Haberes No Imponibles")
@@ -35,3 +70,4 @@ class hr_contract(models.Model):
     aporte_voluntario_moneda= fields.Selection((('uf', 'UF'), ('clp', 'Pesos')), 'Tipo de Moneda', default="uf")
     forma_pago_apv = fields.Selection((('1', 'Directa'), ('2', 'Indirecta')), 'Forma de Pago', default="1")
     seguro_complementario_moneda= fields.Selection((('uf', 'UF'), ('clp', 'Pesos')), 'Tipo de Moneda', default="uf")
+    centro_costo_id = fields.Many2one('hr.centroscostos', 'Centros Costos')

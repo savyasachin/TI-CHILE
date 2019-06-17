@@ -6,10 +6,10 @@
           <t t-foreach="docs" t-as="o">
             <div class="page">
                 <div class="text-center">
-                    <h2>Libro de Remuneraciones</h2>
-                    <p>
-                        Fecha <u><span t-field="o.end_date"/></u>
-                    </p>
+	                <h2>Libro de Remuneraciones</h2>
+	                <p>
+	                    Fecha <u><span t-field="o.end_date"/></u>
+	                </p>
                 </div>
                 <table class="table table-condensed">
                     <thead>
@@ -101,10 +101,10 @@
         <t t-foreach="docs" t-as="o">
             <div class="page">
                 <div class="text-center">
-                    <h2>Libro de Remuneraciones</h2>
-                    <p>
-                        To <u><span t-field="o.end_date"/></u>
-                    </p>
+	                <h2>Libro de Remuneraciones</h2>
+	                <p>
+	                    To <u><span t-field="o.end_date"/></u>
+	                </p>
                 </div>
                 <table class="table table-condensed">
                     <thead>

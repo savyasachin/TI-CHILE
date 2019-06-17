@@ -1,13 +1,36 @@
+# -*- encoding: utf-8 -*-
+##############################################################################
+#
+#    Odoo, Open Source Management Solution Chilean Payroll
+#
+#    Copyright (c) 2017 Konos
+#    http://konos.cl
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
 import time
 from odoo import models, api
-from odoo.exceptions import UserError, ValidationError
+
 
 class report_hr_salary_employee_bymonth(models.AbstractModel):
     _name = 'report.l10n_cl_hr.report_hrsalarybymonth'
     _description = 'Monthly Salary Report'
 
     @api.model
-    def _get_report_values(self, docids, data=None):
+    def get_report_values(self, docids, data=None):
         if not data.get('form') or not self.env.context.get('active_model') or not self.env.context.get('active_id'):
             raise UserError(_("Form content is missing, this report cannot be printed."))
 
@@ -47,6 +70,19 @@ and (to_char(date_to,'yyyy')= %s) and ('WORK100' = p.code)
             emp_salary.append(max[0])
         return emp_salary
 
+
+    def get_centro_costo(self, id):
+        valor = "01"
+        lineas = self.env['account.analytic.account']
+        detalle = lineas.search([('id','=',id)], limit=1)
+        if detalle:
+            valor = detalle.code
+        return valor  
+
+
+
+
+
     def get_employe_basic_info(self, emp_salary, cod_id, mes, ano):
 
         self.env.cr.execute(
@@ -63,16 +99,12 @@ group by r.name, p.date_to''', (cod_id, mes, ano,))
         try:
             emp_salary.append(max[0])
         except:
-            emp_salary.append(0.00)  
-        return emp_salary
+            emp_salary.append(0.00)
 
-    def get_centro_costo(self, id):
-        valor = "01"
-        lineas = self.env['account.analytic.account']
-        detalle = lineas.search([('id','=',id)], limit=1)
-        if detalle:
-            valor = detalle.code
-        return valor  
+
+            
+
+        return emp_salary
 
     def get_analytic(self, form):
         emp_salary = []

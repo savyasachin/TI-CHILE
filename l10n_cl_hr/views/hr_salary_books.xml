@@ -23,7 +23,7 @@
             <field name="model">hr.salary.employee.month</field>
             <field name="arch" type="xml">
             <form string="Libro de Remuneraciones">
-                <span class="o_form_label">Este wizard permite imprimir el total haberes</span>
+                <label string="Este wizard permite imprimir el total haberes."/>
                     <footer>
                         <button name="print_report" string="Print" type="object" class="oe_highlight"/>or
                         <button string="Cancel" class="oe_link" special="cancel" />
@@ -34,6 +34,7 @@
             </form>
             </field>
         </record>
+
         <record id="report_paper_format_nuevo" model="report.paperformat">
             <field name="name">A4 Horizontal</field>
             <field name="default" eval="True"/>
@@ -46,6 +47,7 @@
             <field name="header_spacing">10</field>
             <field name="dpi">90</field>
         </record>
+        
         <report 
             id="hr_salary_books"
             string="Libro de Remuneraciones"
@@ -54,6 +56,9 @@
             file="l10n_cl_hr.report_hrsalarybymonth"
             name="l10n_cl_hr.report_hrsalarybymonth"
             paperformat="l10n_cl_hr.report_paper_format_nuevo"/>
+
+           
+
 
     </data>
 </odoo>
