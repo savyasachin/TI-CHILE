@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+	<!-- Se cambia nombre de los campos en el grupo 'minimum_rent' obtenidos de 'Previred' -->
+    <record id="as_hr_indicadores_previsionales_view" model="ir.ui.view">
+		<field name="name">as.hr.indicadores.view</field>
+		<field name="model">hr.indicadores</field>
+		<field name="inherit_id" ref="l10n_cl_hr.hr_indicadores_previsionales_view"/>	
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='minimum_rent']" position="replace">
+				<group col="2" name="minimum_rent" string="Rentas Mínimas Imponibles">
+					<field name="sueldo_minimo" string="Trab. Dependientes e Independientes">  </field>
+					<field name="sueldo_minimo_otro" string="Menores de 18 y mayores de 65">  </field>
+				</group> 
+			</xpath>    
+    	</field>
+    </record>
+
+  </data>
+</odoo>
