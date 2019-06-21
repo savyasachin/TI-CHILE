@@ -22,7 +22,7 @@ Custom module for LATTI
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '1.0',
+    'version': '1.1',
 
     # any module necessary for this one to work correctly
     'depends': ['base','l10n_cl_hr'],
@@ -31,7 +31,7 @@ Custom module for LATTI
     'data': [
         # 'security/ir.model.access.csv',
         'data/data.xml',
-        'views/views.xml',
+        'views/as_hr_indicadores_previsionales_view.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
