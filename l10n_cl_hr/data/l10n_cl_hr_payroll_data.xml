@@ -24,6 +24,10 @@
         </record>
 
 
+        <record forcecreate="True" id="hr_payroll.decimal_payroll_rate" model="decimal.precision">
+            <field name="name">Payroll Rate</field>
+            <field name="digits">0</field>
+        </record>
 
 
 
@@ -715,8 +719,13 @@ try:
  SC = round(SECOMP)
 except:
  SC = 0
+try:
+ IS = round(ISL)
+except:
+ IS = 0
+    
 
-result = round(SECEEMP) + round(SIS) + round(MUT) + round(SC)</field>
+result = round(SECEEMP) + round(SIS) + round(MUT) + round(SC) + round(IS)</field>
         </record>
 
 
