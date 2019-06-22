@@ -23,11 +23,15 @@ class as_hr_indicadores_previsionales(models.Model):
 
 
     def get_previred(self,month_year):
-        urlData = "https://api.gael.cl/general/public/previred/"+month_year
-        webURL = urlopen(urlData)
-        data = webURL.read()
-        encoding = webURL.info().get_content_charset('utf-8')
-        return json.loads(data.decode(encoding))
+        try:
+            urlData = "https://api.gael.cl/general/public/previred/"+month_year
+            webURL = urlopen(urlData)
+            data = webURL.read()
+            encoding = webURL.info().get_content_charset('utf-8')
+            return json.loads(data.decode(encoding))
+        except:
+            _logger.debug("/nURL invalid.../n")
+            return ""
     
     def month_year(self):
         month=''
