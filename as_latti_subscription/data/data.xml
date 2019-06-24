@@ -1,0 +1,73 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="ir_cron_scheduler_demo_action" model="ir.cron">
+            <field name="name">As Scheduler Email</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_as_scheduler_email"/>
+            <field name="state">code</field>            
+            <field eval="True" name="doall"/>
+            <field name="code">model.as_scheduler_email_do()</field>
+        </record>
+
+        <record id="as_tmp_email_subs90" model="mail.template">
+            <field name="name">as_tmp_email_subs90</field>
+            <field name="email_from">${(object.company_id.email or object.user_id.email)|safe}</field>
+            <field name="subject">Renovación suscripción - ${object.partner_id.name}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="sale_subscription.model_sale_subscription"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                    <![CDATA[
+              
+                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 90 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
+                  Saludos.<br></p>
+                  &nbsp;
+<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+                ]]>
+            </field>
+        </record>
+        
+        <record id="as_tmp_email_subs60" model="mail.template">
+            <field name="name">as_tmp_email_subs60</field>
+            <field name="email_from">${(object.company_id.email or object.user_id.email)|safe}</field>
+            <field name="subject">Renovación suscripción - ${object.partner_id.name}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="sale_subscription.model_sale_subscription"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                    <![CDATA[
+              
+                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 60 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
+                  Saludos.<br></p>
+                  &nbsp;
+<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+                ]]>
+            </field>
+        </record>
+        <record id="as_tmp_email_subs30" model="mail.template">
+            <field name="name">as_tmp_email_subs30</field>
+            <field name="email_from">${(object.company_id.email or object.user_id.email)|safe}</field>
+            <field name="subject">Renovación suscripción - ${object.partner_id.name}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="sale_subscription.model_sale_subscription"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                    <![CDATA[
+              
+                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 30 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
+                  Saludos.<br></p>
+                  &nbsp;
+<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

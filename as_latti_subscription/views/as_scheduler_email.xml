@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="as_view_scheduler_email_form" model="ir.ui.view">
+            <field name="name">as.scheduler.email.form</field>
+            <field name="model">as.scheduler.email</field>
+            <field name="arch" type="xml">
+                <form string="Schedule record">
+                    <group>
+                        <field name="name"/>
+                        <field name="numberOfUpdates"/>
+                        <field name="lastModified"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <!-- tree (list) view-->
+        <record id="as_view_scheduler_email_tree" model="ir.ui.view">
+            <field name="name">as.scheduler.email.tree</field>
+            <field name="model">as.scheduler.email</field>
+            <field name="arch" type="xml">
+                <tree string="Schedule records">
+                    <field name="name"/>
+                    <field name="numberOfUpdates"/>
+                    <field name="lastModified"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
