@@ -8,6 +8,9 @@
 		<field name="model">hr.indicadores</field>
 		<field name="inherit_id" ref="l10n_cl_hr.hr_indicadores_previsionales_view"/>	
 		<field name="arch" type="xml">
+			<xpath expr="//header/button" position="replace">                
+                <button string="Update" type="object" name="as_update_document" context="{'force_update':True}" />           
+			</xpath>
 			<xpath expr="//group[@name='minimum_rent']" position="replace">
 				<group col="2" name="minimum_rent" string="Rentas Mínimas Imponibles $">
 					<field name="sueldo_minimo" string="Trab. Dependientes e Independientes">  </field>
