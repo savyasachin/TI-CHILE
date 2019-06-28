@@ -23,11 +23,71 @@
             <field name="auto_delete" eval="True"/>
             <field name="body_html">
                     <![CDATA[
-              
-                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 90 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
-                  Saludos.<br></p>
-                  &nbsp;
-<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+               
+                <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color: #2642af;"><br><br>
+    <table style="border-collapse:collapse;background-color: white;" width="600" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;"><br><br><a href="https://www.tichile.cl/" target="_blank" rel="noopener" style="text-decoration:none;color:rgb(0, 135, 132);background-color:transparent;"><img src="/as_latti_subscription/static/src/img/logo-ti-chile.png" alt="https://www.tichile.cl" width="200" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0px;text-align:justify; padding:45px; ">
+                                    <p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif;">Estimado Cliente gracias por preferirnos.&nbsp;</p><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que:</p><ul style="margin:0px 0 9px 0;"><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Su suscripción "<b style="font-weight:bold;">${object.display_name}"</b></p></li><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">VENCE en <b style="font-weight:bold;">90 días</b>.</p></li></ul><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Para coordinar su renovación favor contactar con su ejecutivo al telefono<b style="font-weight:bold;">&nbsp;+56225709294</b> indicando el Nombre o Rut de la Compañía. <br></p><b style="font-weight:bold;"> </b></td>
+                            </tr>                       
+                      </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                   <img src="/as_latti_subscription/static/src/img/marcas.jpg" width="560" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;">
+<br><br>
+                </td>
+            </tr>
+<tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br><br>
+</div>
+            
+                
+            
+            
+                
+            
                 ]]>
             </field>
         </record>
@@ -42,11 +102,65 @@
             <field name="auto_delete" eval="True"/>
             <field name="body_html">
                     <![CDATA[
-              
-                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 60 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
-                  Saludos.<br></p>
-                  &nbsp;
-<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+            
+                <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color: #2642af;"><br><br>
+    <table style="border-collapse:collapse;background-color: white;" width="600" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;"><br><br><a href="https://www.tichile.cl/" target="_blank" rel="noopener" style="text-decoration:none;color:rgb(0, 135, 132);background-color:transparent;"><img src="/as_latti_subscription/static/src/img/logo-ti-chile.png" alt="https://www.tichile.cl" width="200" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0px;text-align:justify; padding:45px; ">
+                                    <p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif;">Estimado Cliente gracias por preferirnos.&nbsp;</p><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que:</p><ul style="margin:0px 0 9px 0;"><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Su suscripción "<b style="font-weight:bold;">${object.display_name}"</b></p></li><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">VENCE en <b style="font-weight:bold;">60 días</b>.</p></li></ul><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Para coordinar su renovación favor contactar con su ejecutivo al telefono<b style="font-weight:bold;">&nbsp;+56225709294</b> indicando el Nombre o Rut de la Compañía. <br></p><b style="font-weight:bold;"> </b></td>
+                            </tr>                       
+                      </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                   <img src="/as_latti_subscription/static/src/img/marcas.jpg" width="560" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;">
+<br><br>
+                </td>
+            </tr>
+<tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br><br>
+</div>
                 ]]>
             </field>
         </record>
@@ -61,10 +175,64 @@
             <field name="body_html">
                     <![CDATA[
               
-                <p>Estimado Cliente, gracias por preferirnos.<br><br> El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que su suscripción "${object.display_name}",&nbsp; VENCE en 30 días. Para coordinar su renovación favor contactar con su ejecutivo al fono +56225709294 indicando el Nombre o Rut de la Compañía.<br><br>
-                  Saludos.<br></p>
-                  &nbsp;
-<p><img src="/as_latti_subscription/static/src/img/marcas.jpg" style="width: 800px;height: 500px;"></p>
+                <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color: #2642af;"><br><br>
+    <table style="border-collapse:collapse;background-color: white;" width="600" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;"><br><br><a href="https://www.tichile.cl/" target="_blank" rel="noopener" style="text-decoration:none;color:rgb(0, 135, 132);background-color:transparent;"><img src="/as_latti_subscription/static/src/img/logo-ti-chile.png" alt="https://www.tichile.cl" width="200" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0px;text-align:justify; padding:45px; ">
+                                    <p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif;">Estimado Cliente gracias por preferirnos.&nbsp;</p><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">El compromiso nuestro es entregarles lo mejor de nosotros. Esta comunicación tiene como objeto recordarle que:</p><ul style="margin:0px 0 9px 0;"><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Su suscripción "<b style="font-weight:bold;">${object.display_name}"</b></p></li><li><p style="margin:0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">VENCE en <b style="font-weight:bold;">30 días</b>.</p></li></ul><p style="margin:0px 0px 9px 0px;font-size: 16px;font-family: Georgia,Times,Times New Roman,serif; ">Para coordinar su renovación favor contactar con su ejecutivo al telefono<b style="font-weight:bold;">&nbsp;+56225709294</b> indicando el Nombre o Rut de la Compañía. <br></p><b style="font-weight:bold;"> </b></td>
+                            </tr>                       
+                      </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding:0px;">
+                   <img src="/as_latti_subscription/static/src/img/marcas.jpg" width="560" style="vertical-align:middle;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;">
+<br><br>
+                </td>
+            </tr>
+<tr>
+                <td align="center" style="padding:0px;">
+                    <table width="100%" cellspacing="0" cellpadding="0" style="background-color:transparent;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding:0px;color: transparent;">.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br><br>
+</div>
                 ]]>
             </field>
         </record>
