@@ -156,12 +156,12 @@ class CalendarEvent(models.Model):
             if not record.office_365_id:
                 record._office_365_push_create()
             else:
-                if record.user_id.id != self.env.user.id:
-                    raise exceptions.UserError(
-                        _('You are not the organizer of the event "{}"'
-                          ' please try to edit this event in Office 365.')
-                        .format(record.name)
-                    )
+                # if record.user_id.id != self.env.user.id:
+                #     raise exceptions.UserError(
+                #         _('You are not the organizer of the event "{}"'
+                #           ' please try to edit this event in Office 365.')
+                #         .format(record.name)
+                #     )
                 record._office_365_push_update()
 
     def _office_365_process_changes(self, changes, start, end):
