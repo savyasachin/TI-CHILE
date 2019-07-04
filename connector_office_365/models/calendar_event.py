@@ -225,7 +225,7 @@ class CalendarEvent(models.Model):
         event.office_365_push()
         return event
 
-    @api.model
+    @api.multi
     def write(self, vals):
         res = super(CalendarEvent, self).write(vals)
         user = self.env.context.get('user', self.env.user)
