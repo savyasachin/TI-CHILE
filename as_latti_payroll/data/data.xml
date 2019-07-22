@@ -35,6 +35,24 @@ else:
 else:
     result = ((payslip.indicadores_id.fonasa * TOTIM)/100)</field>
         </record>
+
+        <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA' -->
+        <record id="l10n_cl_hr.hr_rule_19" model="hr.salary.rule">
+            <field name="amount_python_compute">if contract.pension is True:
+     result = 0
+elif contract.type_id.name == 'Sueldo Empresarial':
+     result = 0
+elif contract.type_id.name == 'Plazo Fijo':
+     result = 0
+elif (TOTIM/payslip.indicadores_id.uf)>=(payslip.indicadores_id.tope_imponible_seguro_cesantia):
+     result =round(payslip.indicadores_id.tope_imponible_seguro_cesantia*payslip.indicadores_id.uf*payslip.indicadores_id.contrato_plazo_indefinido_trabajador)
+elif contract.type_id.name == 'Indefinido' or contract.type_id.name == 'Plazo Indefinido':
+     result = round(TOTIM*payslip.indicadores_id.contrato_plazo_indefinido_trabajador)
+elif contract.type_id.name == 'Indefinido 11 anos o mas':
+     result = round(TOTIM*payslip.indicadores_id.contrato_plazo_indefinido_trabajador_otro)
+else:
+     result = 0</field>
+        </record>
         
     </data>
 </odoo>
