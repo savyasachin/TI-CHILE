@@ -13,7 +13,7 @@ LATTI Module
 Custom module for LATTI
     """,
     'author': "Ahorasoft",
-    'version': '1.2.3',
+    'version': '1.2.4',
     'website': "http://www.ahorasoft.com",
     'category': 'Uncategorized',
     'depends': ['base','l10n_cl_hr'],
@@ -22,6 +22,7 @@ Custom module for LATTI
         'data/data.xml',
         'views/as_hr_indicadores_previsionales_view.xml',
         'views/templates.xml',
+        'views/as_hr_contract_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

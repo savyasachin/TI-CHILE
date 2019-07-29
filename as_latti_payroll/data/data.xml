@@ -1,9 +1,9 @@
 <odoo>
-    <data noupdate="0">>
+  <data noupdate="0">>
 
-        <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'PREVISION' -->
-        <record id="l10n_cl_hr.hr_rule_18" model="hr.salary.rule">
-            <field name="amount_python_compute">if contract.afp_id.name == 'CAPITAL':
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'PREVISION' -->
+    <record id="l10n_cl_hr.hr_rule_18" model="hr.salary.rule">
+        <field name="amount_python_compute">if contract.afp_id.name == 'CAPITAL':
     tasa = payslip.indicadores_id.tasa_afp_capital
 elif contract.afp_id.name == 'CUPRUM':
     tasa = payslip.indicadores_id.tasa_afp_cuprum
@@ -26,19 +26,19 @@ elif (TOTIM/payslip.indicadores_id.uf)>=round(payslip.indicadores_id.tope_imponi
     result =((payslip.indicadores_id.tope_imponible_afp*payslip.indicadores_id.uf)*tasa /100)
 else:
     result = ((TOTIM)*tasa /100)</field>
-        </record>
+    </record>
 
-        <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'FONASA' -->
-        <record id="l10n_cl_hr.hr_rule_34" model="hr.salary.rule">
-            <field name="amount_python_compute">if (TOTIM/payslip.indicadores_id.uf)>=(payslip.indicadores_id.tope_imponible_afp):
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'FONASA' -->
+    <record id="l10n_cl_hr.hr_rule_34" model="hr.salary.rule">
+        <field name="amount_python_compute">if (TOTIM/payslip.indicadores_id.uf)>=(payslip.indicadores_id.tope_imponible_afp):
     result =(((payslip.indicadores_id.tope_imponible_afp*payslip.indicadores_id.uf)*payslip.indicadores_id.fonasa) /100)
 else:
     result = ((payslip.indicadores_id.fonasa * TOTIM)/100)</field>
-        </record>
+    </record>
 
-        <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA' -->
-        <record id="l10n_cl_hr.hr_rule_19" model="hr.salary.rule">
-            <field name="amount_python_compute">if contract.pension is True:
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA' -->
+    <record id="l10n_cl_hr.hr_rule_19" model="hr.salary.rule">
+        <field name="amount_python_compute">if contract.pension is True:
      result = 0
 elif contract.type_id.name == 'Sueldo Empresarial':
      result = 0
@@ -52,11 +52,11 @@ elif contract.type_id.name == 'Indefinido 11 anos o mas':
      result = round((TOTIM*payslip.indicadores_id.contrato_plazo_indefinido_trabajador_otro)/100)
 else:
      result = 0</field>
-        </record>
+    </record>
 
-        <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA APORTE EMPRESA' -->
-        <record id="l10n_cl_hr.hr_rule_21" model="hr.salary.rule">
-            <field name="amount_python_compute">amount = 0
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA APORTE EMPRESA' -->
+    <record id="l10n_cl_hr.hr_rule_21" model="hr.salary.rule">
+        <field name="amount_python_compute">amount = 0
 if inputs.HEX50:
     amount = inputs.HEX50.amount
 DEVENGABLE=round(contract.wage+contract.otros_imp+amount)
@@ -87,7 +87,53 @@ elif contract.type_id.name == 'Plazo Fijo':
      result = round((totimpo*payslip.indicadores_id.contrato_plazo_fijo_empleador)/100)
 else:
      result = 0</field>
-        </record>
+    </record>
+
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'SEGURO CESANTIA APORTE EMPRESA' -->
+    <record id="l10n_cl_hr.hr_rule_21" model="hr.salary.rule">
+        <field name="amount_python_compute">amount = 0
+if inputs.HEX50:
+    amount = inputs.HEX50.amount
+DEVENGABLE=round(contract.wage+contract.otros_imp+amount)
+
+GRATI=round(DEVENGABLE * 25 / 100 )
+if GRATI > (4.75 * payslip.indicadores_id.sueldo_minimo /12):
+    GRATI = round (4.75 * payslip.indicadores_id.sueldo_minimo / 12)
+else:
+    GRATI = GRATI
+
+
+if (TOTIM/payslip.indicadores_id.uf) >=round(payslip.indicadores_id.tope_imponible_seguro_cesantia):
+     totimpo = round(payslip.indicadores_id.tope_imponible_seguro_cesantia*payslip.indicadores_id.uf)
+elif TOTIM ==0:
+     totimpo =round(DEVENGABLE+GRATI)
+else:
+     totimpo = TOTIM
+
+if contract.pension is True:
+     result = 0
+elif contract.type_id.name == 'Sueldo Empresarial':
+     result = 0
+elif contract.type_id.name == 'Indefinido' or contract.type_id.name == 'Plazo Indefinido':
+     result = round((totimpo*payslip.indicadores_id.contrato_plazo_indefinido_empleador)/100)
+elif contract.type_id.name == 'Indefinido 11 anos o mas':
+     result = round((totimpo*payslip.indicadores_id.contrato_plazo_indefinido_empleador_otro)/100)
+elif contract.type_id.name == 'Plazo Fijo':
+     result = round((totimpo*payslip.indicadores_id.contrato_plazo_fijo_empleador)/100)
+else:
+     result = 0</field>
+    </record>
+
+    <!-- Se cambia funciones de calculo en python para 'Reglas Salariales' en regla 'GRATIFICACION LEGAL' -->
+    <record id="l10n_cl_hr.hr_rule_6" model="hr.salary.rule">
+      <field name="amount_python_compute">GRATI=round((categories.IMPONIBLE * contract.gratificacion_porcentage) / 100 )
+if (contract.type_id.name == 'Sueldo Empresarial'):
+    result = 0
+elif GRATI > (4.75 * payslip.indicadores_id.sueldo_minimo /12):
+    result = round (4.75 * payslip.indicadores_id.sueldo_minimo / 12)
+else:
+    result = GRATI</field>
+    </record>
         
-    </data>
+  </data>
 </odoo>
