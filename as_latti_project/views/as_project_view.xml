@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="as_view_task_form2" model="ir.ui.view">
+            <field name="name">as.project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='extra_info']" position="after">
+                    <page name="stage_time" string="Tiempo por etapas">
+                        <field name="stage_time_ids">                            
+                            <tree>                                
+                                <field name="stage_id" />
+                                <field name="last_time" />
+                                <field name="time" widget="float_time" sum="Tiempo Total"/>
+                            </tree>                            
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
