@@ -129,8 +129,6 @@ else:
       <field name="amount_python_compute">GRATI=round((categories.IMPONIBLE * contract.gratificacion_porcentage) / 100 )
 if (contract.type_id.name == 'Sueldo Empresarial'):
     result = 0
-elif GRATI > (4.75 * payslip.indicadores_id.sueldo_minimo /12):
-    result = round (4.75 * payslip.indicadores_id.sueldo_minimo / 12)
 else:
     result = GRATI</field>
     </record>
