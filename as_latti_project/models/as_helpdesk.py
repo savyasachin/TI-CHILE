@@ -48,7 +48,7 @@ class HelpdeskTicket(models.Model):
 class helpdesk_ticket_stage_time(models.Model):
     _name = 'helpdesk.ticket.stage.time'
 
-    stage_id = fields.Many2one('helpdesk.ticket.type',string='Etapa')
+    stage_id = fields.Many2one('helpdesk.stage',string='Etapa')
     time = fields.Float('Tiempo', default=0.0)
     last_time = fields.Datetime(default=fields.Datetime.now)
     ticket_id = fields.Many2one('helpdesk.ticket', string="Tarea")
