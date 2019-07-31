@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_task_stage_time,as_latti_project.project_task_stage_time,model_project_task_stage_time,project.group_project_user,1,1,1,1
+access_helpdesk_ticket_stage_time,as_latti_project.helpdesk_ticket_stage_time,model_helpdesk_ticket_stage_time,helpdesk.group_helpdesk_user,1,1,1,1

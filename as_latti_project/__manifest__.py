@@ -2,7 +2,7 @@
 {
     'name': "Ahorasoft Latti Project",
     'category': 'Project',
-    'version': '1.0.2',
+    'version': '1.0.3',
     'author': "Ahorasoft",
     'website': 'http://www.ahorasoft.com',
     "support": "soporte@ahorasoft.com",
@@ -13,13 +13,14 @@
     """,
     "images": [],
     "depends": [
-        "base","project","sale_subscription"
+        "base","project","sale_subscription","helpdesk"
     ],
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/as_project_view.xml',
+        'views/as_helpdesk_view.xml',
     ],
     'qweb': [
     ],
