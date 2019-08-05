@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="assets_backend" name="helpdesk assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/as_latti_project/static/src/less/as_kanban_view.less"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,8 @@
+.o-kanban-record-color(@size: 1) when (@size < @odoo-nb-ui-color) {
+    // Note: the 0 color is not defined as it is the 'no color' for kanban
+    .oe_kanban_color_@{size}{
+        background-color: ~"@{odoo-color-@{size}}";
+        //background-color: red;
+    }
+    .o-kanban-record-color(@size + 1);
+}
