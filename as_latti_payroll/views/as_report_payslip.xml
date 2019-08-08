@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+    <template id="as_report_payslip" inherit_id="hr_payroll.report_payslip">
+      <xpath expr="//div[@class='page']/table[6]/tbody/tr/td[2]/table/tr/t/td[1]/t[2]" position="replace">     
+        <t t-if=" ('Subtotal' !=p.category_id.name)">
+          <t t-if="('FONASA' == o.contract_id.isapre_id.name and p.name == 'SALUD')">
+            <span>FONASA</span>
+          </t>
+          <t t-if="('FONASA' == o.contract_id.isapre_id.name and p.name != 'SALUD')">
+            <span t-field="p.name"/>
+          </t>                                         
+        </t>
+      </xpath> 
+    </template>
+  </data>
+</odoo>
