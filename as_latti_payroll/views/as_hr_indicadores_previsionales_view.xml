@@ -11,6 +11,9 @@
 			<xpath expr="//header/button" position="replace">                
                 <button string="Update" type="object" name="as_update_document" context="{'force_update':True}" />           
 			</xpath>
+			<xpath expr="//field[@name='uf']" position="after">     
+                <field name="tope_imponible_salud"/>
+			</xpath>
 			<xpath expr="//group[@name='minimum_rent']" position="replace">
 				<group col="2" name="minimum_rent" string="Rentas Mínimas Imponibles $">
 					<field name="sueldo_minimo" string="Trab. Dependientes e Independientes">  </field>
