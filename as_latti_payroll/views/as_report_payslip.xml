@@ -13,7 +13,10 @@
             </t>
             <t t-if="('FONASA' != o.contract_id.isapre_id.name)">
               <span t-field="p.name"/>
-            </t>                                      
+            </t> 
+            <t t-if="('FONASA' == o.contract_id.isapre_id.name and p.name != 'SALUD')">
+              <span t-field="p.name"/>
+            </t>                                     
           </t>
         </td>
       </xpath> 

@@ -13,7 +13,7 @@ LATTI Module
 Custom module for LATTI
     """,
     'author': "Ahorasoft",
-    'version': '1.2.9',
+    'version': '1.3.0',
     'website': "http://www.ahorasoft.com",
     'category': 'Uncategorized',
     'depends': ['base','l10n_cl_hr'],
