@@ -27,8 +27,25 @@ class MailActivity(models.Model):
     def create(self, values):
         activity = super(MailActivity, self).create(values)
         _logger.debug("\n\n\n CREATE MAIL: %s\n\n\n"%(activity.activity_type_id.display_name))
-        a = [(0,0,{'mail_activity_id':activity.id,'calendar_alarm_id':id.id}) for id in activity.as_alarm_ids]
-        event_obj = self.env['calendar.event'].create(dict(
+        #a = [(0,0,{'mail_activity_id':activity.id,'calendar_alarm_id':id.id}) for id in activity.as_alarm_ids]
+        event_obj = self.as_create_event(activity)        
+        return activity
+
+    @api.multi
+    def write(self, values):
+        _logger.debug("\n\n\n WRITE MAIL\n\n\n")
+        if 'as_start_time' in values:
+            values['date_deadline'] = values['as_start_time'][:10]
+        #date_deadline
+        res = super(MailActivity, self).write(values)
+        if self.calendar_event_id:
+            res_event = self.as_write_event()
+        else:
+            event_obj = self.as_create_event(self)
+        return res
+
+    def as_create_event(self,activity):
+        event_obj = self.env['calendar.event'].sudo().create(dict(
             name=(str(activity.activity_type_id.display_name) + ' - ' + str(activity.summary)),
             start=activity.as_start_time,
             duration=activity.as_duration,
@@ -43,11 +60,18 @@ class MailActivity(models.Model):
             event_obj.location = activity.as_location
             event_obj.alarm_ids = activity.as_alarm_ids
             event_obj.partner_ids = activity.as_partner_ids.ids + [activity.user_id.id] + event_obj.partner_ids.ids
-        
-        return activity
-
-    @api.multi
-    def write(self, values):
-        _logger.debug("\n\n\n WRITE MAIL\n\n\n")
-        res = super(MailActivity, self).write(values)
-        return res
+        return event_obj
+    
+    def as_write_event(self):
+        event_obj = self.env['calendar.event'].sudo().search([('id','=',self.id)])
+        if event_obj:
+            event_obj.name = (str(activity.activity_type_id.display_name) + ' - ' + str(activity.summary))
+            event_obj.start = activity.as_start_time
+            event_obj.duration = activity.as_duration
+            event_obj.stop = datetime.strftime((datetime.strptime(activity.as_start_time, "%Y-%m-%d %H:%M:%S")+ timedelta(hours=activity.as_duration)),"%Y-%m-%d %H:%M:%S")
+            event_obj.description = activity.note
+            event_obj.location = activity.as_location
+            event_obj.alarm_ids = activity.as_alarm_ids
+            event_obj.partner_ids = activity.as_partner_ids.ids + [activity.user_id.id] + event_obj.partner_ids.ids
+            return True
+        return False

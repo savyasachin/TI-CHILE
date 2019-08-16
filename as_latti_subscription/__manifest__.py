@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Ahorasoft LATTI Subscription",
-    'version': '1.2.3',
+    'version': '1.2.4',
 
     'summary': """
         LATTI Module
