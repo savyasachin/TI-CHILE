@@ -1,0 +1,24 @@
+<odoo>
+  <data>
+
+    <template id="as_latti_web.as_signup" name="As Sign up login" inherit_id="auth_signup.signup">
+
+      <xpath expr="//t[@t-call='auth_signup.fields']" position="before">
+        <div class="form-group field-name">
+          <label for="as_empresa" class="control-label">Tu empresa</label>
+          <input type="text" name="as_empresa" id="as_empresa" class="form-control" placeholder="" />
+        </div>
+        <div class="form-group field-name">
+          <label for="as_tipo_soporte" class="control-label">Tipo soporte</label>
+          <select name="as_tipo_soporte" id="as_tipo_soporte" class="form-control">
+            <option value="free">Gratis</option>
+            <option value="paid">Pagado</option>
+          </select>
+          <!-- <input type="text" name="as_tipo_soporte" id="as_tipo_soporte" class="form-control" placeholder="" /> -->
+        </div>
+      </xpath>
+
+    </template>
+
+  </data>
+</odoo>

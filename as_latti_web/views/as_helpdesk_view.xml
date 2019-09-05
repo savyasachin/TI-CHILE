@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="as_helpdesk_ticket_view_form_web" model="ir.ui.view">
+      <field name="name">as.helpdesk.ticket.form.web</field>
+      <field name="model">helpdesk.ticket</field>
+      <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='priority']" position="after">
+          <field name="as_empresa" />
+        </xpath>
+        <xpath expr="//field[@name='tag_ids']" position="after">
+          <field name="as_tipo_soporte" />
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

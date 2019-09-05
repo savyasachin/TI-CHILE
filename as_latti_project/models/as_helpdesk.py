@@ -14,7 +14,14 @@ class HelpdeskTicket(models.Model):
 
     @api.model
     def create(self, vals):
+        # Se crea ticket con el color asignado a su grupo
+        if 'team_id' in vals:
+            team_id = self.env['helpdesk.team'].search([('id','=',vals['team_id'])])
+            if team_id:
+                vals.update({'color':team_id.color})     
+        # Se llama al Super           
         helpdesk = super(HelpdeskTicket, self).create(vals)
+        #Se crea el record de tiempo
         helpdesk.stage_time_ids.create({
             'ticket_id': helpdesk.id,
             'stage_id':helpdesk.stage_id.id,

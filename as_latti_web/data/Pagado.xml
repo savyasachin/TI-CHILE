@@ -1,0 +1,139 @@
+<t t-name="website.pagado">
+  <t t-call="website.layout">
+    <div id="wrap" class="oe_structure oe_empty">
+      <section class="jumbotron s_big_message mt0 oe_img_bg oe_custom_bg" style="background-position: 35.77% 23.13%; background-image: url(&quot;/web/image/16129/kaspersky_new_logo_2.jpg&quot;);">
+        <div class="container">
+          <div class="row">
+            <div class="mb32 col-md-offset-1 col-md-11">
+              <h1 style="text-align: right;">
+                <i>
+                  <font class="text-alpha" style="">Soporte Full</font>
+                </i>
+                <br/>
+              </h1>
+              <p style="text-align: right;">
+                <br/>
+              </p>
+              <div style="text-align: right;">
+                <a class="btn btn-success btn-lg" href="/pagado#" data-original-title="" title=""><span class="fa fa-check fa-1x" style="" data-original-title="" title=""/>&amp;nbsp; Complete el Formulario</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_title" t-if="user_id.partner_id.name == 'Public user' or user_id.partner_id.as_tipo_soporte == 'free'">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">Obtenga soporte gratuito<br/></h1>
+              <h3 class="text-center">
+                <a href="https://ti-chile.odoo.com/web/login">Para obtener soporte gratis debe registrarse o logear como usuario de pago</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_title" t-if="not user_id.partner_id.name == 'Public user' and user_id.partner_id.as_tipo_soporte == 'paid'">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">Modulo de envío de requerimientos</h1>
+              <h3 class="text-center text-muted">Estamos siempre prestos a atender sus solicitudes</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <form t-if="not user_id.partner_id.name == 'Public user' and user_id.partner_id.as_tipo_soporte == 'paid'" action="/website_form/" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket" data-success_page="/your-ticket-has-been-submitted">
+        <input type="hidden" name="team_id" t-att-value="10"/>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Nombre">Nombre Solicitante</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="Nombre" t-att-value="user_id.partner_id.name"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="name">Empresa&amp;nbsp;</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="name" required="1" t-att-value="user_id.partner_id.as_empresa" />
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <b>Asunto</b>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="Empresa a la que pertenece" required=""/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="email">Correo electrónico<br/></label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="email" required="" t-att-value="user_id.partner_id.email"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Productos"> Productos </label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <select class="form-control o_website_form_input" name="Productos" required="false">
+              <option value="KES Kaspersky Endpoint Security"> KES Kaspersky Endpoint Security </option>
+              <option value="KSC Kaspersky Security Center"> KSC Kaspersky Security Center </option>
+              <option value="KSV Agente Liviano para ambientes Virtualizados"> KSV Agente Liviano para ambientes Virtualizados </option>
+              <option value="KS4WS Kaspersky Security for Windows Server"> KS4WS Kaspersky Security for Windows Server </option>
+              <option value="Agente de Red"> Agente de Red </option>
+              <option value="Otros Productos"> Otros Productos </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Tipo de Licencia"> Tipo de Licencia </label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <select class="form-control o_website_form_input" name="Tipo de Licencia" required="false">
+              <option value="SELECT (Kaspersky Endpoint Security for Business SELECT)"> SELECT (Kaspersky Endpoint Security for Business SELECT) </option>
+              <option value="ADVANCED (Kaspersky Endpoint Security for Business ADVANCED)"> ADVANCED (Kaspersky Endpoint Security for Business ADVANCED) </option>
+              <option value="TOTAL (Kaspersky Total Security for Business)"> TOTAL (Kaspersky Total Security for Business) </option>
+              <option value="KSV (Kaspersky Hybrid Cloud Security)"> KSV (Kaspersky Hybrid Cloud Security) </option>
+              <option value="O365 (Kaspersky Security for Microsoft Office 365)"> O365 (Kaspersky Security for Microsoft Office 365) </option>
+              <option value="Exchange (Kaspersky Security for Microsoft Exchange)"> Exchange (Kaspersky Security for Microsoft Exchange) </option>
+              <option value="Kaspersky Small Office Security"> Kaspersky Small Office Security </option>
+              <option value="Endpoint Security Cloud"> Endpoint Security Cloud </option>
+              <option value="Endpoint Security Cloud Plus"> Endpoint Security Cloud Plus </option>
+              <option value="Otras Licencias"> Otras Licencias </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Cantidad de licencias que posee">Cantidad de licencias que posee</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="number" class="form-control o_website_form_input" step="1" name="Cantidad de licencias que posee"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="description">Descríbanos su solicitud<br/></label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <textarea class="form-control o_website_form_input" name="description" required=""/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+            <span class="btn btn-primary btn-lg o_website_form_send"><span class="fa fa-check fa-1x" style="" data-original-title="" title=""/> Enviar</span>
+            <span id="o_website_form_result" class="text-danger ml8"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </t>
+</t>

@@ -1,0 +1,220 @@
+<t t-name="website.gratis">
+  <t t-call="website.layout">
+    <div id="wrap" class="oe_structure oe_empty">
+      <div id="myCarousel1564712446030" class="carousel slide s_banner mt0 mb0" data-interval="10000" style="height: 400px;">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel1564712446030" data-slide-to="0" class="active">
+            <br/>
+          </li>
+          <li data-target="#myCarousel1564712446030" data-slide-to="1">
+            <br/>
+          </li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item oe_img_bg o_bg_img_opt_custom active" style="background-image: url(&quot;/web/image/website.s_background_image_07&quot;); background-size: auto 300%; background-position: 0% 0%;">
+            <div class="container">
+              <div class="row content">
+                <div class="carousel-content col-md-offset-1 mt0 col-md-2 mb0" style="">
+                  <br/>
+                  <h4>
+                    <br/>
+                    <img src="/web/image/16125/Kaspersky-labs_new.jpg" style="width: 100%;" class="pull-left" data-original-title="" title=""/>
+                    <br/>
+                  </h4>
+                  <h4>
+                    <br/>
+                  </h4>
+                  <h4>
+                    <br/>
+                  </h4>
+                  <p>&amp;nbsp;&amp;nbsp;<a href="#" class="btn btn-warning" data-original-title="" title=""><span class="fa fa-1x fa-check" style="" data-original-title="" title=""/> Complete el formulario</a>
+                  </p>
+                </div>
+                <div class="carousel-img col-md-offset-1 hidden-sm hidden-xs col-md-8 mb128 mt128" style="">
+                  <img class="img-responsive" src="/web/image/16334/logo_gratis%20-%20copia.png" alt="Slider Odoo Image" data-original-title="" title=""/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item bg-gray oe_img_bg" style="background-image: url(&quot;/web/image/website.s_background_image_03&quot;);">
+            <div class="container">
+              <div class="row content">
+                <div class="carousel-content col-md-4 col-md-offset-1 mb96 mt128">
+                  <h2>Soporte Gratis </h2>
+                  <h4>Describenos tu solicitud<br/></h4>
+                </div>
+                <div class="carousel-img hidden-sm hidden-xs mb128 mt128 col-md-6">
+                  <img class="img-responsive" src="/web/image/16125/Kaspersky-labs_new.jpg" alt="Slider Odoo Image" data-original-title="" title=""/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-control left" data-target="#myCarousel1564712446030" data-slide="prev" style="width: 10%" data-cke-saved-href="#myCarousel1564712446030">
+          <i class="fa fa-chevron-left" data-original-title="" title=""/>
+        </div>
+        <div class="carousel-control right" data-target="#myCarousel1564712446030" data-slide="next" style="width: 10%" data-cke-saved-href="#myCarousel1564712446030">
+          <i class="fa fa-chevron-right" data-original-title="" title=""/>
+        </div>
+      </div>
+      <section class="s_title" t-if="user_id.partner_id.name == 'Public user' or user_id.partner_id.as_tipo_soporte == 'paid'">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">Obtenga soporte gratuito<br/></h1>
+              <h3 class="text-center">
+                <a href="https://ti-chile.odoo.com/web/login">Para obtener soporte gratis debe registrarse o logear como usuario gratuito</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_title" t-if="not user_id.partner_id.name == 'Public user' and user_id.partner_id.as_tipo_soporte == 'free'">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">Modulo de envío de requerimientos<br/></h1>
+              <h3 class="text-center text-muted">Estamos siempre prestos a atender sus solicitudes<br/></h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <form t-if="not user_id.partner_id.name == 'Public user' and user_id.partner_id.as_tipo_soporte == 'free'" action="/website_form/" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket" data-success_page="/your-ticket-has-been-submitted">
+        <input type="hidden" name="team_id" t-att-value="9"/>
+        <div class="form-group form-field o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="partner_name">Nombre Solicitante</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="partner_name" required="" t-att-value="user_id.partner_id.name"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="name">Empresa&amp;nbsp;</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="name" required="1" t-att-value="user_id.partner_id.as_empresa" />
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Empresa a la que pertenece">Asunto</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="Empresa a la que pertenece" required=""/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="partner_email">Correo Electrónico</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="text" class="form-control o_website_form_input" name="partner_email" required="" t-att-value="user_id.partner_id.email"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Producto"> Productos&amp;nbsp;</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <select class="form-control o_website_form_input" name="Producto" required="false">
+              <option value="KES Kaspersky Endpoint Security">
+                            KES Kaspersky Endpoint Security
+                        </option>
+              <option value="KSC Kaspersky Security Center">
+                            KSC Kaspersky Security Center
+                        </option>
+              <option value="KS4WS Kaspersky Security for Windows Server">
+                            KS4WS Kaspersky Security for Windows Server
+                        </option>
+              <option value="Otros Productos">
+                            Otros Productos
+                        </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Tipo de Licencia">
+                    Tipo de Licencia
+                </label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <select class="form-control o_website_form_input" name="Tipo de Licencia" required="false">
+              <option value="SELECT (Kaspersky Endpoint Security for Business SELECT)">
+                            SELECT (Kaspersky Endpoint Security for Business SELECT)
+                        </option>
+              <option value="ADVANCED (Kaspersky Endpoint Security for Business ADVANCED)">
+                            ADVANCED (Kaspersky Endpoint Security for Business ADVANCED)
+                        </option>
+              <option value="TOTAL (Kaspersky Total Security for Business)">
+                            TOTAL (Kaspersky Total Security for Business)
+                        </option>
+              <option value="KSV (Kaspersky Hybrid Cloud Security)">
+                            KSV (Kaspersky Hybrid Cloud Security)
+                        </option>
+              <option value="O365 (Kaspersky Security for Microsoft Office 365)">
+                            O365 (Kaspersky Security for Microsoft Office 365)
+                        </option>
+              <option value="Exchange (Kaspersky Security for Microsoft Exchange)">
+                            Exchange (Kaspersky Security for Microsoft Exchange)
+                        </option>
+              <option value="Kaspersky Small Office Security">
+                            Kaspersky Small Office Security
+                        </option>
+              <option value="Endpoint Security Cloud">
+                            Endpoint Security Cloud
+                        </option>
+              <option value="Endpoint Security Cloud Plus">
+                            Endpoint Security Cloud Plus
+                        </option>
+              <option value="Otras Licencias">
+                            Otras Licencias
+                        </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="Cantidad de Licencias que posee">Cantidad de Licencias que posee</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <input type="number" class="form-control o_website_form_input" step="1" name="Cantidad de Licencias que posee"/>
+          </div>
+        </div>
+        <div class="form-group form-field o_website_form_required_custom">
+          <div class="col-md-3 col-sm-4 text-right-not-xs">
+            <label class="control-label" for="description">Descríbanos su solicitud</label>
+          </div>
+          <div class="col-md-7 col-sm-8">
+            <textarea class="form-control o_website_form_input" name="description" required=""/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+            <span class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Enviar</span>
+            <span id="o_website_form_result" class="text-danger ml8"/>
+          </div>
+        </div>
+      </form>
+      <section class="jumbotron s_button mt0 mb0 bg-gray-lighter oe_img_bg oe_custom_bg" style="background-image: url(&quot;/website/static/src/img/library/mobile_device.jpg&quot;); background-position: 32.9% 63.24%;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9">
+              <p class="mb0">&amp;nbsp; <strong><font style="font-size: 36px;" class="bg-black-25 text-alpha">Soporte Gratis.&amp;nbsp;</font></strong></p>
+              <p class="mb0">
+                <strong>
+                  <font style="font-size: 12px;">&amp;nbsp;</font>
+                </strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <a href="#" class="pull-right mt8 btn btn-primary btn-lg" data-original-title="" title=""> Contáctanos ahora <i class="fa fa-chevron-right" data-original-title="" title=""/> </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </t>
+</t>
