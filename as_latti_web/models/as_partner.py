@@ -11,5 +11,3 @@ class Partner(models.Model):
 
     as_empresa = fields.Char(string="Empresa")
     as_tipo_soporte = fields.Selection(selection=[('free','Gratis'),('paid','Pagado')], string="Tipo soporte")
-
-Partner()

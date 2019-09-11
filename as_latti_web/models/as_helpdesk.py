@@ -12,3 +12,11 @@ class HelpdeskTicket(models.Model):
 
     as_empresa = fields.Char(related='partner_id.as_empresa',string="Empresa")
     as_tipo_soporte = fields.Selection(related='partner_id.as_tipo_soporte', string="Tipo soporte")
+
+    @api.multi
+    def name_get(self):
+        result = []
+        for ticket in self:
+            result.append((ticket.id, "%s (#%s)" % (ticket.name, str(ticket.id))))
+        return result
+    
