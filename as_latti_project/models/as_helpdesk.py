@@ -18,7 +18,13 @@ class HelpdeskTicket(models.Model):
         if 'team_id' in vals:
             team_id = self.env['helpdesk.team'].search([('id','=',vals['team_id'])])
             if team_id:
-                vals.update({'color':team_id.color})     
+                vals.update({'color':team_id.color})
+                # if team_id.as_notify_to:
+                #     vals.append({'message_follower_ids': team_id.as_notify_to.ids})
+        if not 'stage_id' in vals:
+            stage_obj = self.env['helpdesk.stage'].search([('sequence','=',1)])
+            if stage_obj:
+                vals.update({'stage_id':stage_obj.id})
         # Se llama al Super           
         helpdesk = super(HelpdeskTicket, self).create(vals)
         #Se crea el record de tiempo
@@ -46,9 +52,6 @@ class HelpdeskTicket(models.Model):
                 if obj_stage_time:
                     obj_stage_time.time += (datetime.now()-datetime.strptime(obj_stage_time.last_time,'%Y-%m-%d %H:%M:%S')).total_seconds()/3600
                     obj_stage_time.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-
-                a=2
         helpdesk = super(HelpdeskTicket, self).write(vals)        
         return
 
@@ -59,3 +62,8 @@ class helpdesk_ticket_stage_time(models.Model):
     time = fields.Float('Tiempo', default=0.0)
     last_time = fields.Datetime(default=fields.Datetime.now)
     ticket_id = fields.Many2one('helpdesk.ticket', string="Tarea")
+
+# class HelpdeskTeam(models.Model):
+#     _inherit = "helpdesk.team"
+
+#     #as_notify_to = fields.Many2many('res.users', 'heldesk_team_users_notify_rel','team_id','user_id',  string='Usuarios')
