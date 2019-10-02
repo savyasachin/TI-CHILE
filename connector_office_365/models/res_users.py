@@ -27,6 +27,10 @@ class ResUsers(models.Model):
     office_365_refresh_token = fields.Char()
     office_365_expiration = fields.Datetime()
 
+    office_365_url_base = fields.Char(string='Url')
+    office_365_client_id = fields.Char(string='Client ID')
+    office_365_client_secret = fields.Char(string='Client Secret')
+
     def __init__(self, pool, cr):
         super(ResUsers, self).__init__(pool, cr)
         type(self).SELF_WRITEABLE_FIELDS = list(self.SELF_WRITEABLE_FIELDS)
@@ -72,9 +76,11 @@ class ResUsers(models.Model):
     @api.multi
     def _office_365_get_session(self, scope=None):
         self.ensure_one()
-        config = self.env['ir.config_parameter'].sudo()
-        client_id = config.get_param('office_365.client_id')
+        #config = self.env['ir.config_parameter'].sudo()
+        #client_id = config.get_param('office_365.client_id')
+        client_id = self.office_365_client_id
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'
+        #redirect_uri = self.office_365_url_base
 
         token = None
         if self.office_365_access_token and self.office_365_expiration > fields.Datetime.now():
@@ -100,8 +106,9 @@ class ResUsers(models.Model):
 
     @api.model
     def office_365_get_token(self, authorization_response):
-        config = self.env['ir.config_parameter'].sudo()
-        client_secret = config.get_param('office_365.client_secret')
+        #config = self.env['ir.config_parameter'].sudo()
+        #client_secret = config.get_param('office_365.client_secret')
+        client_secret = self.office_365_client_secret
 
         session = self._office_365_get_session()
         return session.fetch_token(
@@ -113,8 +120,9 @@ class ResUsers(models.Model):
 
     @api.model
     def office_365_get_url(self):
-        config = self.env['ir.config_parameter'].sudo()
-        return config.get_param('office_365.url_base')
+        #config = self.env['ir.config_parameter'].sudo()
+        #return config.get_param('office_365.url_base')
+        return self.office_365_url_base
 
     @api.multi
     def office_365_persist_token(self, token):
@@ -140,9 +148,11 @@ class ResUsers(models.Model):
         if expiration < now:
             session = self._office_365_get_session()
 
-            config = self.env['ir.config_parameter'].sudo()
-            client_id = config.get_param('office_365.client_id')
-            client_secret = config.get_param('office_365.client_secret')
+            # config = self.env['ir.config_parameter'].sudo()
+            # client_id = config.get_param('office_365.client_id')
+            # client_secret = config.get_param('office_365.client_secret')
+            client_id = self.office_365_client_id
+            client_secret = self.office_365_client_secret
 
             token = session.refresh_token(
                 token_url=TOKEN_URL,
@@ -163,9 +173,11 @@ class ResUsers(models.Model):
                 .format(self.login)
             )
 
-        config = self.env['ir.config_parameter'].sudo()
-        client_id = config.get_param('office_365.client_id')
-        client_secret = config.get_param('office_365.client_secret')
+        # config = self.env['ir.config_parameter'].sudo()
+        # client_id = config.get_param('office_365.client_id')
+        # client_secret = config.get_param('office_365.client_secret')
+        client_id = self.office_365_client_id
+        client_secret = self.office_365_client_secret
 
         # Refresh token
         self.office_365_do_refresh_token()
