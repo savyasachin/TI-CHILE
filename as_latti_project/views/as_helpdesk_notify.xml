@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="as_helpdesk_notify_tree" model="ir.ui.view">
+            <field name="name">Notificaciones Helpdesk</field>
+            <field name="model">as.helpdesk.notify</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="as_helpdesk_notify_form" model="ir.ui.view">
+            <field name="name">Notificaciones Helpdesk</field>
+            <field name="model">as.helpdesk.notify</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="as_notify_to" widget="many2many_tags" options="{'color_field': 'color','no_open': True, 'no_create': True}"/>
+                            <field name="as_stage_id_initial"  options="{'color_field': 'color','no_open': True, 'no_create': True}"/>
+                            <field name="as_stage_id_final"  options="{'color_field': 'color','no_open': True, 'no_create': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="as_helpdesk_notify_action" model="ir.actions.act_window">
+            <field name="name">Notificaciones Helpdesk</field>
+            <field name="res_model">as.helpdesk.notify</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('as_helpdesk_notify_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('as_helpdesk_notify_form')})]"/>
+        </record> 
+
+        <menuitem id="as_helpdesk_notify_menu" action="as_helpdesk_notify_action"
+        sequence="5" parent="helpdesk.helpdesk_menu_config"
+        groups="helpdesk.group_use_sla"/>
+
+    </data>
+</odoo>

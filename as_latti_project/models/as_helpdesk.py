@@ -11,6 +11,7 @@ class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
     stage_time_ids = fields.One2many('helpdesk.ticket.stage.time','ticket_id', string='Tiempo por etapa')
+    as_notify = fields.Many2one('as.helpdesk.notify', default= lambda self: self.env['as.helpdesk.notify'].search([('name','=','Notificar Usuarios')], limit=1).id )
 
     @api.model
     def create(self, vals):
@@ -52,7 +53,7 @@ class HelpdeskTicket(models.Model):
                 if obj_stage_time:
                     obj_stage_time.time += (datetime.now()-datetime.strptime(obj_stage_time.last_time,'%Y-%m-%d %H:%M:%S')).total_seconds()/3600
                     obj_stage_time.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        helpdesk = super(HelpdeskTicket, self).write(vals)        
+        helpdesk = super(HelpdeskTicket, self).write(vals)
         return
 
 class helpdesk_ticket_stage_time(models.Model):
@@ -66,4 +67,6 @@ class helpdesk_ticket_stage_time(models.Model):
 # class HelpdeskTeam(models.Model):
 #     _inherit = "helpdesk.team"
 
-#     #as_notify_to = fields.Many2many('res.users', 'heldesk_team_users_notify_rel','team_id','user_id',  string='Usuarios')
+#     as_notify_to = fields.Many2many('res.users', 'heldesk_team_users_notify_rel','team_id','user_id',  string='Usuarios')
+#     member_ids = fields.Many2many('res.users', 'heldesk_team_res_users_rel', string='Team Members', domain=lambda self: [('groups_id', 'in', self.env.ref('helpdesk.group_helpdesk_user').id)])
+

@@ -1,0 +1,7 @@
+<openerp> 
+    <data noupdate="1">
+        <record id="as_helpdesk_notify_users" model="as.helpdesk.notify">
+            <field name="name">Notificar Usuarios</field>
+        </record>
+    </data>
+</openerp>        

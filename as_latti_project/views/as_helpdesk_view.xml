@@ -7,6 +7,11 @@
       <field name="model">helpdesk.ticket</field>
       <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
       <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='tag_ids']" position="after">
+          <field name="as_notify" invisible="1"/>
+        </xpath>
+
         <xpath expr="//field[@name='description']" position="after">
           <notebook>
             <page name="stage_time" string="Tiempo por etapas">
@@ -20,6 +25,7 @@
             </page>
           </notebook>
         </xpath>
+
       </field>
     </record>
 
