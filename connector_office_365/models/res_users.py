@@ -76,7 +76,7 @@ class ResUsers(models.Model):
     @api.multi
     def _office_365_get_session(self, scope=None):
         self.ensure_one()
-        #config = self.env['ir.config_parameter'].sudo()
+        config = self.env['ir.config_parameter'].sudo()
         #client_id = config.get_param('office_365.client_id')
         client_id = self.office_365_client_id
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'

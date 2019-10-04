@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <record id="as_log_calendar_tree" model="ir.ui.view">
+    <field name="name">Logs Calendar Tree</field>
+    <field name="model">as.log.calendar</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="date" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="as_log_calendar_form" model="ir.ui.view">
+    <field name="name">Logs Calendar Form</field>
+    <field name="model">as.log.calendar</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="date"/>
+          </group>
+          <group>
+            <field name="send"/>
+            <field name="response"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="as_log_calendar_action" model="ir.actions.act_window">
+    <field name="name">Logs Calendar</field>
+    <field name="res_model">as.log.calendar</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <!-- <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('as_log_calendar_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('as_log_calendar_form')})]" /> -->
+  </record>
+
+
+
+  <menuitem id="as_log_calendar_menu" parent="website_calendar.menu_schedule_report"
+    action="as_log_calendar_action" />
+
+</odoo>

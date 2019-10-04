@@ -5,7 +5,7 @@
     'license': 'AGPL-3',
     'website': 'https://www.onestein.nl',
     'category': 'Tools',
-    'version': '1.2.5',
+    'version': '1.2.6',
     'development_status': 'Alpha',
     'depends': [
         'base','calendar'
@@ -17,7 +17,8 @@
         'templates/assets.xml',
         'views/res_config_settings_view.xml',
         'views/calendar_event_view.xml',
-        'views/res_users_view.xml'
+        'views/res_users_view.xml',
+        'views/as_log_calendar.xml',
     ],
     'qweb': [
         'static/src/xml/backend.xml'
