@@ -11,6 +11,6 @@ class as_helpdesk_notify(models.Model):
     _name = 'as.helpdesk.notify'
 
     name = fields.Char(string="Notificar Usuarios")
-    as_notify_to = fields.Many2many(comodel_name='res.users', string='Usuarios')
+    as_notify_to = fields.Many2many('res.users', string='Usuarios')
     as_stage_id_initial = fields.Many2one('helpdesk.stage', string='Etapa inicial')
     as_stage_id_final = fields.Many2one('helpdesk.stage', string='Etapa final')
