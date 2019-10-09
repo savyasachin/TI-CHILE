@@ -5,10 +5,10 @@
     'license': 'AGPL-3',
     'website': 'https://www.onestein.nl',
     'category': 'Tools',
-    'version': '1.2.6',
+    'version': '1.2.7',
     'development_status': 'Alpha',
     'depends': [
-        'base','calendar'
+        'base','calendar','website_calendar'
     ],
     'external_dependencies': {
         'python': ['requests_oauthlib']

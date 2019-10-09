@@ -119,6 +119,7 @@ class CalendarEvent(models.Model):
     def office_365_fetch(self, start, end):
         user = self.env.context.get('user', self.env.user)
 
+        #_logger.debug("\n\nIniciando : %s\n\n"%(user.office_365_access_token))
         if not user.office_365_access_token:
             return user.button_office_365_authenticate()
         headers = {

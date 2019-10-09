@@ -49,6 +49,8 @@ class ResUsers(models.Model):
 
     @api.multi
     def button_office_365_authenticate(self):
+        _logger.debug("\n\nIniciando button_office_365_authenticate \n\n")
+
         self.ensure_one()
 
         url = self.office_365_authorization_url(
@@ -80,6 +82,8 @@ class ResUsers(models.Model):
         #client_id = config.get_param('office_365.client_id')
         client_id = self.office_365_client_id
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'
+        
+        _logger.debug("\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n"%(config,client_id,redirect_uri))        
         #redirect_uri = self.office_365_url_base
 
         token = None
@@ -99,6 +103,7 @@ class ResUsers(models.Model):
 
     @api.model
     def office_365_authorization_url(self, scope=None):
+        _logger.debug("\n\nIniciando office_365_authorization_url \n\n")
         session = self._office_365_get_session(scope=scope)
         return session.authorization_url(
             url=AUTH_URL
