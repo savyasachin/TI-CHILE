@@ -132,7 +132,7 @@ class CalendarEvent(models.Model):
             url,
             headers=headers
         ).text)
-        self.env['as.log.calendar'].create({'response':str(result['value'])})
+        #self.env['as.log.calendar'].create({'response':str(result['value'])})
         self._office_365_process_changes(result['value'], start, end)
 
     def _office_365_push_create(self):
