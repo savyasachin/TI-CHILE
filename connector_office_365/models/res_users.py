@@ -81,9 +81,10 @@ class ResUsers(models.Model):
         config = self.env['ir.config_parameter'].sudo()
         #client_id = config.get_param('office_365.client_id')
         client_id = self.office_365_client_id
+        _logger.debug("\n\n\nclient_id : %s\n\n\n"%client_id)
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'
         
-        _logger.debug("\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n"%(config,client_id,redirect_uri))        
+        _logger.debug("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
         #redirect_uri = self.office_365_url_base
 
         token = None
@@ -181,6 +182,8 @@ class ResUsers(models.Model):
         # config = self.env['ir.config_parameter'].sudo()
         # client_id = config.get_param('office_365.client_id')
         # client_secret = config.get_param('office_365.client_secret')
+        _logger.debug("\n\n\nAHORASOFT\nclient ID :%s\nSecret: %s\nNombre: %s\n\n\n"%( self.office_365_client_id,self.office_365_client_secret,self.name))   
+
         client_id = self.office_365_client_id
         client_secret = self.office_365_client_secret
 
@@ -195,9 +198,13 @@ class ResUsers(models.Model):
                                    data=data,
                                    client_id=client_id,
                                    client_secret=client_secret)
+        _logger.debug("\n\n\n365 credenciales REST :\nmetodo: %s\nurl: %s\nheaders: %s\ndata: %s\ncliente_id: %s\nsecreto:%s\n\n\n"%(method,url,headers,data,client_id,client_secret))
+        _logger.debug("\n\n\nTEST_365:%s\n\n\n"%response)   
         if not response.ok:
-            error = json.loads(response.text)
-            raise Exception(error['error']['message'])
+            _logger.debug("\n\n\nresponse ERROR:%s\n\n\n"%response)   
+            #error = json.loads(response.text)
+            #raise Exception(error['error']['message'])
+            #raise Exception(response)
         return response
 
     @api.multi

@@ -17,6 +17,7 @@ odoo.define('connector_office_365', function(require) {
 
         _syncOffice365Calendar: function () {
             var self = this;
+            console.log("TEST JS");
             return this._rpc({
                 model: 'calendar.event',
                 method: 'office_365_fetch',

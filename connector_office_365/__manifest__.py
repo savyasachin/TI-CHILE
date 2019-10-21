@@ -5,7 +5,7 @@
     'license': 'AGPL-3',
     'website': 'https://www.onestein.nl',
     'category': 'Tools',
-    'version': '1.2.8',
+    'version': '1.2.9',
     'development_status': 'Alpha',
     'depends': [
         'base','calendar','website_calendar'
