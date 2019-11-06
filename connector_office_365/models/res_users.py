@@ -84,7 +84,8 @@ class ResUsers(models.Model):
         _logger.debug("\n\n\nclient_id : %s\n\n\n"%client_id)
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'
         
-        _logger.debug("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
+        _logger.error("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
+        _logger.info("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
         #redirect_uri = self.office_365_url_base
 
         token = None
