@@ -7,17 +7,15 @@
         <field name="model">calendar.event</field>
         <field name="inherit_id" ref="calendar.view_calendar_event_form" />
         <field name="arch" type="xml">
-            <!-- <xpath expr="//field[@name='user_id']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                 <field name="office_365_id" readonly="True" attrs="{'invisible': [('office_365_id', '=', False)]}" />
-            </xpath> -->
+            </xpath>
             <xpath expr="//button[@name='action_open_calendar_event']" position="after">
-                <!-- <field name="office_365_url" invisible="1" /> -->
+                <field name="office_365_url" invisible="1" />
                 <button string="Open in Office 365"
-                    class="btn-link float-right"
-                    type="object"
-                    name="office_365_open" 
-                    
-                />
+                        class="btn-link float-right"
+                        type="object"
+                        name="office_365_open" attrs="{'invisible': [('office_365_url', '=', False)]}"/>
             </xpath>
         </field>
     </record>
