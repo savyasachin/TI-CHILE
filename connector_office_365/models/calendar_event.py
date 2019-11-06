@@ -138,7 +138,8 @@ class CalendarEvent(models.Model):
     def _office_365_push_create(self):
         if not self.user_id:
             return
-        _logger.error('post event %s', self.name)
+        _logger.error('\n\nself.user_id %s', self.user_id)
+        _logger.error('self.name %s', self.name)
         result = self.user_id.office_365_post(
             '/me/events/',
             headers={'Content-Type': 'application/json'},
@@ -231,7 +232,7 @@ class CalendarEvent(models.Model):
         event = super(CalendarEvent, self).create(vals)
         # if (not self.env.context.get('office_365_force')
         #         and self.env.context.get('create_o365_event')):
-        # event.office_365_push()
+        event.office_365_push()
         return event
 
     @api.multi
@@ -243,7 +244,7 @@ class CalendarEvent(models.Model):
             #         self.env.context.get('office_365_force', False):
             #     if user != self.env.user:
             #         event = event.sudo(user)
-            # event.office_365_push()
+            event.office_365_push()
         return res
 
     @api.multi
