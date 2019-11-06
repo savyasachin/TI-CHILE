@@ -231,7 +231,7 @@ class CalendarEvent(models.Model):
         event = super(CalendarEvent, self).create(vals)
         # if (not self.env.context.get('office_365_force')
         #         and self.env.context.get('create_o365_event')):
-        event.office_365_push()
+        # event.office_365_push()
         return event
 
     @api.multi
@@ -243,7 +243,7 @@ class CalendarEvent(models.Model):
             #         self.env.context.get('office_365_force', False):
             #     if user != self.env.user:
             #         event = event.sudo(user)
-            event.office_365_push()
+            # event.office_365_push()
         return res
 
     @api.multi
