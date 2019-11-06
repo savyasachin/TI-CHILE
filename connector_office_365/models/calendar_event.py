@@ -239,11 +239,11 @@ class CalendarEvent(models.Model):
     def write(self, vals):
         res = super(CalendarEvent, self).write(vals)
         user = self.env.context.get('user', self.env.user)
-        for event in self:
-            # if event.office_365_id and not \
-            #         self.env.context.get('office_365_force', False):
-            #     if user != self.env.user:
-            #         event = event.sudo(user)
+        # for event in self:
+                    # if event.office_365_id and not \
+                    #         self.env.context.get('office_365_force', False):
+                    #     if user != self.env.user:
+                    #         event = event.sudo(user)
             # event.office_365_push()
         return res
 
