@@ -118,6 +118,8 @@ class CalendarEvent(models.Model):
     @api.model
     def office_365_fetch(self, start, end):
         user = self.env.context.get('user', self.env.user)
+        _logger.error('\n\nself.env.user %s', self.env.user)
+        _logger.error('\n\nself.user_id %s', self.user_id)
 
         #_logger.debug("\n\nIniciando : %s\n\n"%(user.office_365_access_token))
         if not user.office_365_access_token:
