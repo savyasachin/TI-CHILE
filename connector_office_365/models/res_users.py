@@ -84,9 +84,11 @@ class ResUsers(models.Model):
         _logger.debug("\n\n\nclient_id : %s\n\n\n"%client_id)
         redirect_uri = config.get_param('web.base.url') + '/office-365-oauth/success'
         
-        _logger.error("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
-        _logger.info("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
+        # _logger.error("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
+        # _logger.info("\n\n\n\nIniciando _office_365_get_session\nconfig: %s\nclient_id: %s\nredirect_uri: %s  \n\n\n\n\n"%(config,client_id,redirect_uri))        
         #redirect_uri = self.office_365_url_base
+        _logger.error("\n\n\office_365_do_refresh_token\nclient ID :%s\nSecret: %s\nrefresh_token: %s\n\n\n"%( self.office_365_client_id,self.office_365_client_secret,self.office_365_refresh_token))  
+
 
         token = None
         if self.office_365_access_token and self.office_365_expiration > fields.Datetime.now():
