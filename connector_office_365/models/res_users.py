@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 try:
     from requests_oauthlib.oauth2_session import OAuth2Session
 except ImportError:
-    logger.debug('Cannot import requests_oauthlib')
+    _logger.debug('Cannot import requests_oauthlib')
 
 
 AUTH_URL = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
@@ -159,6 +159,8 @@ class ResUsers(models.Model):
             # client_secret = config.get_param('office_365.client_secret')
             client_id = self.office_365_client_id
             client_secret = self.office_365_client_secret
+
+            _logger.debug("\n\n\office_365_do_refresh_token\nclient ID :%s\nSecret: %s\nrefresh_token: %s\n\n\n"%( self.office_365_client_id,self.office_365_client_secret,self.office_365_refresh_token))  
 
             token = session.refresh_token(
                 token_url=TOKEN_URL,
