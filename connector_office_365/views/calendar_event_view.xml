@@ -11,11 +11,13 @@
                 <field name="office_365_id" readonly="True" attrs="{'invisible': [('office_365_id', '=', False)]}" />
             </xpath>
             <xpath expr="//button[@name='action_open_calendar_event']" position="after">
-                <field name="office_365_url" invisible="1" />
+                <!-- <field name="office_365_url" invisible="1" /> -->
                 <button string="Open in Office 365"
-                        class="btn-link float-right"
-                        type="object"
-                        name="office_365_open" attrs="{'invisible': [('office_365_url', '=', False)]}"/>
+                    class="btn-link float-right"
+                    type="object"
+                    name="office_365_open" 
+                    
+                />
             </xpath>
         </field>
     </record>
