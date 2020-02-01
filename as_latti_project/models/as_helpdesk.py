@@ -56,12 +56,12 @@ class as_HelpdeskTicket(models.Model):
                         })
                 elif obj_stage_time_dest:
                     obj_stage_time_dest.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                obj_stage_time =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',self.stage_id.id),('ticket_id','=',self.id)])
+                obj_stage_time =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',self.stage_id.id),('ticket_id','=',self.id)],limit=1)
                 if obj_stage_time:
                     obj_stage_time.time += (datetime.now()-datetime.strptime(obj_stage_time.last_time,'%Y-%m-%d %H:%M:%S')).total_seconds()/3600
                     obj_stage_time.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         helpdesk = super(as_HelpdeskTicket, self).write(vals)
-        return
+        return helpdesk
 
 class helpdesk_ticket_stage_time(models.Model):
     _name = 'helpdesk.ticket.stage.time'
