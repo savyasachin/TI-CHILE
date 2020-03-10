@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
-    as_empresa = fields.Char(related='partner_id.as_empresa',string="Empresa")
+    as_empresa = fields.Many2one(related='partner_id.as_empresa',string="Empresa")
     as_tipo_soporte = fields.Selection(related='partner_id.as_tipo_soporte', string="Tipo soporte")
 
     @api.multi

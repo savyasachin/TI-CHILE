@@ -2,7 +2,7 @@
 {
     'name': "Ahorasoft Latti Web",
     'category': 'Web',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'author': "Ahorasoft",
     'website': 'http://www.ahorasoft.com',
     "support": "soporte@ahorasoft.com",

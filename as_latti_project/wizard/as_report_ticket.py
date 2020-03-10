@@ -11,6 +11,7 @@ class as_kardex_productos_wiz(models.TransientModel):
     end_date = fields.Date('Hasta la Fecha', default=fields.Date.context_today)
     stage_id = fields.Many2many('helpdesk.stage',string='Etapa')
     partner_id = fields.Many2many('res.partner', string='Cliente')
+    as_empresa = fields.Many2many('as.empresa', string='Empresa')
     
     # as_cliente = fields.Many2many('stock.location', string="Almacen", domain="[('usage', '=', 'internal')]")
     # as_estado = fields.Many2many('stock.location', string="Almacen", domain="[('usage', '=', 'internal')]")

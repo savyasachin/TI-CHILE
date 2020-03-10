@@ -9,5 +9,10 @@ from datetime import datetime, timedelta
 class Partner(models.Model):
     _inherit = 'res.partner'
 
-    as_empresa = fields.Char(string="Empresa")
+    as_empresa = fields.Many2one('as.empresa',string="Empresa")
     as_tipo_soporte = fields.Selection(selection=[('free','Gratis'),('paid','Pagado')], string="Tipo soporte")
+
+class as_empresa(models.Model):
+    _name = 'as.empresa'
+
+    name = fields.Char(string="Empresa")

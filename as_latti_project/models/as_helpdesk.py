@@ -6,12 +6,18 @@ from datetime import timedelta
 from odoo import api, fields, models, _
 from odoo.tools.safe_eval import safe_eval
 from datetime import datetime, timedelta
+from odoo import SUPERUSER_ID
+from odoo import http
+
 
 class as_HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
     stage_time_ids = fields.One2many('helpdesk.ticket.stage.time','ticket_id', string='Tiempo por etapa')
     as_notify = fields.Many2one('as.helpdesk.notify', default= lambda self: self.env['as.helpdesk.notify'].search([('name','=','Notificar Usuarios')], limit=1).id )
+    userc_id = fields.Many2one('res.users', string='User')
+
+
 
     @api.model
     def create(self, vals):
@@ -41,13 +47,17 @@ class as_HelpdeskTicket(models.Model):
             'stage_id':helpdesk.stage_id.id,
             'last_time': fields.Datetime.now(),
             })
+        user_create = self.env['res.users'].search([('id','=', http.request.uid)],limit=1)
+        helpdesk.write({
+            'partner_id': user_create.partner_id.id,
+            })
         return helpdesk
 
     @api.multi
     def write(self, vals):
         if 'stage_id' in vals:
             if self.stage_id.id != vals['stage_id']:
-                obj_stage_time_dest =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',vals['stage_id']),('ticket_id','=',self.id)],limit=1,order="write_date desc")
+                obj_stage_time_dest =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',vals['stage_id']),('ticket_id','=',self.id)])
                 if not obj_stage_time_dest:
                     obj_stage_time_dest.create({
                         'ticket_id': self.id,
@@ -56,12 +66,12 @@ class as_HelpdeskTicket(models.Model):
                         })
                 elif obj_stage_time_dest:
                     obj_stage_time_dest.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                obj_stage_time =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',self.stage_id.id),('ticket_id','=',self.id)],limit=1,order="write_date desc")
+                obj_stage_time =  self.env['helpdesk.ticket.stage.time'].search([('stage_id','=',self.stage_id.id),('ticket_id','=',self.id)])
                 if obj_stage_time:
                     obj_stage_time.time += (datetime.now()-datetime.strptime(obj_stage_time.last_time,'%Y-%m-%d %H:%M:%S')).total_seconds()/3600
                     obj_stage_time.last_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         helpdesk = super(as_HelpdeskTicket, self).write(vals)
-        return helpdesk
+        return
 
 class helpdesk_ticket_stage_time(models.Model):
     _name = 'helpdesk.ticket.stage.time'

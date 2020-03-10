@@ -19,6 +19,8 @@ class as_kardex_productos_excel(models.AbstractModel):
             filtro+= ' and hs.id in '+ str(data['form']['stage_id']).replace('[','(').replace(']',')')
         if data['form']['partner_id']:
             filtro+= ' and rp.id in '+ str(data['form']['partner_id']).replace('[','(').replace(']',')')
+        if data['form']['as_empresa']:
+            filtro+= ' and ae.id in '+ str(data['form']['as_empresa']).replace('[','(').replace(']',')')
 
         sheet = workbook.add_worksheet('Detalle de Movimientos')
         titulo1 = workbook.add_format({'font_size': 16, 'align': 'center', 'text_wrap': True, 'bold':True })
@@ -86,7 +88,7 @@ class as_kardex_productos_excel(models.AbstractModel):
         query_movements = ("""
             SELECT
                 rp.name as name
-                ,rp.as_empresa as empresa
+                ,ae.name as empresa
                 ,hd.id as numero
                 ,hd.name as asunto
                 ,hd.create_date as fecha_creacion
@@ -99,6 +101,7 @@ class as_kardex_productos_excel(models.AbstractModel):
                     INNER JOIN helpdesk_stage hs on hs.id=hd.stage_id
                     INNER JOIN res_users ru on ru.id=hd.user_id
                     INNER JOIN res_partner rp2 on rp2.id=ru.partner_id
+                    INNER JOIN as_empresa ae on ae.id = rp.as_empresa
                 WHERE
                     hd.create_date BETWEEN '"""+str(data['form']['start_date'])+"""' AND  '"""+str(data['form']['end_date'])+"""'"""+filtro+"""
                 ORDER BY fecha_creacion
@@ -123,7 +126,7 @@ class as_kardex_productos_excel(models.AbstractModel):
                 sheet.write(filas, 5,  '') 
             sheet.write(filas, 6, ticket[6]) 
             sheet.write(filas, 7, ticket[7]) 
-            sheet.write(filas, 8, str(fecha_dias.days)+'dias') 
+            sheet.write(filas, 8, str(fecha_dias.days*24)+' horas') 
             filas += 1
 
         sheet.merge_range('A'+str(filas+1)+':B'+str(filas+1),'TOTAL TICKETS', letter12)
