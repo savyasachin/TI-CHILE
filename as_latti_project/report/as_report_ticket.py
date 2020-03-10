@@ -99,9 +99,9 @@ class as_kardex_productos_excel(models.AbstractModel):
                     helpdesk_ticket hd
                     INNER JOIN res_partner rp on rp.id=hd.partner_id
                     INNER JOIN helpdesk_stage hs on hs.id=hd.stage_id
-                    INNER JOIN res_users ru on ru.id=hd.user_id
+                    LEFT JOIN res_users ru on ru.id=hd.user_id
                     INNER JOIN res_partner rp2 on rp2.id=ru.partner_id
-                    INNER JOIN as_empresa ae on ae.id = rp.as_empresa
+                    LEFT JOIN as_empresa ae on ae.id = rp.as_empresa
                 WHERE
                     hd.create_date BETWEEN '"""+str(data['form']['start_date'])+"""' AND  '"""+str(data['form']['end_date'])+"""'"""+filtro+"""
                 ORDER BY fecha_creacion
