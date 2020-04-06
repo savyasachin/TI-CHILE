@@ -12,6 +12,7 @@ class HelpdeskTicket(models.Model):
 
     as_empresa = fields.Many2one(related='partner_id.as_empresa',string="Empresa")
     as_tipo_soporte = fields.Selection(related='partner_id.as_tipo_soporte', string="Tipo soporte")
+    as_horas_desarrollo = fields.Integer(string="Horas Desarrollo",default=0)
 
     @api.multi
     def name_get(self):

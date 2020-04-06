@@ -2,7 +2,7 @@
 {
     'name': "Ahorasoft Latti Project",
     'category': 'Project',
-    'version': '1.1.2',
+    'version': '1.1.3',
     'author': "Ahorasoft",
     'website': 'http://www.ahorasoft.com',
     "support": "soporte@ahorasoft.com",

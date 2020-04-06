@@ -21,26 +21,19 @@ class as_HelpdeskTicket(models.Model):
 
     @api.model
     def create(self, vals):
+        # Se crea ticket con el color asignado a su grupo
+        # if 'team_id' in vals:
+        #     team_id = self.env['helpdesk.team'].search([('id','=',vals['team_id'])])
+        #     if team_id:
+        #         vals.update({'color':team_id.color})
+        #         # if team_id.as_notify_to:
+        #         #     vals.append({'message_follower_ids': team_id.as_notify_to.ids})
+        # if not 'stage_id' in vals:
+        #     stage_obj = self.env['helpdesk.stage'].search([('sequence','=',1)], limit=1)
+        #     if stage_obj:
+        #         vals.update({'stage_id':stage_obj.id})
         # Se llama al Super           
         helpdesk = super(as_HelpdeskTicket, self).create(vals)
-        # Se crea ticket con el color asignado a su grupo
-        vals = []
-        if 'team_id' in vals:
-            team_id = self.env['helpdesk.team'].search([('id','=',vals['team_id'])])
-            if team_id:
-                # vals.append({'color':team_id.color})
-                helpdesk.color = team_id.color
-                # if team_id.as_notify_to:
-                #     vals.append({'message_follower_ids': team_id.as_notify_to.ids})
-        if not 'stage_id' in vals:
-            stage_obj = self.env['helpdesk.stage'].search([('sequence','=',1)], limit=1)
-            if stage_obj:
-                # vals.append({'stage_id':stage_obj.id})
-                helpdesk.stage_id = stage_obj.id
-                
-                
-        # helpdesk.write(vals)
-        
         #Se crea el record de tiempo
         helpdesk.stage_time_ids.create({
             'ticket_id': helpdesk.id,

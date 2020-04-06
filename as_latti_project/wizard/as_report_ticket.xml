@@ -60,6 +60,8 @@
         sequence="50"
         groups="helpdesk.group_helpdesk_user" />
 
-    
+        <menuitem id="helpdesk.helpdesk_ticket_report_menu_main" name="Reporting"
+        sequence="20" parent="helpdesk.menu_helpdesk_root"
+        groups="helpdesk.group_helpdesk_user"/>
 </data>
 </odoo>

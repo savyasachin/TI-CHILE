@@ -12,6 +12,7 @@
         </xpath>
         <xpath expr="//field[@name='tag_ids']" position="after">
           <field name="as_tipo_soporte" />
+          <field name="as_horas_desarrollo" />
         </xpath>
       </field>
     </record>

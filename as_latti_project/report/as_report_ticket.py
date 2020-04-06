@@ -55,7 +55,7 @@ class as_kardex_productos_excel(models.AbstractModel):
         sheet.set_column('F:F',15, letter1)
         sheet.set_column('G:G',15, letter1)
         sheet.set_column('H:H',20, letter1)
-        sheet.set_column('I:I',15, letter1)
+        sheet.set_column('I:I',25, letter1)
         sheet.set_column('J:J',15, letter1)
         sheet.set_column('K:K',15, letter1)
 
@@ -83,6 +83,8 @@ class as_kardex_productos_excel(models.AbstractModel):
         sheet.write(filas, 6, 'ESTADO',titulo4) #cliente/proveedor
         sheet.write(filas, 7, 'ASIGNADO A',titulo4) #cliente/proveedor
         sheet.write(filas, 8, 'TIEMPO DE ATENCION',titulo4) #cliente/proveedor
+        sheet.write(filas, 9, 'HORAS DESARROLLO',titulo4) #cliente/proveedor
+        sheet.set_row(filas,30,titulo4)
         filas += 1
 
         query_movements = ("""
@@ -95,6 +97,7 @@ class as_kardex_productos_excel(models.AbstractModel):
                 ,hd.write_date as fecha_fin
                 ,hs.name as estado
                 ,rp2.name as asignado
+                ,hd.as_horas_desarrollo as horas_desarrollo
                 FROM
                     helpdesk_ticket hd
                     INNER JOIN res_partner rp on rp.id=hd.partner_id
@@ -126,7 +129,8 @@ class as_kardex_productos_excel(models.AbstractModel):
                 sheet.write(filas, 5,  '') 
             sheet.write(filas, 6, ticket[6]) 
             sheet.write(filas, 7, ticket[7]) 
-            sheet.write(filas, 8, str(fecha_dias.days*24)+' horas') 
+            sheet.write(filas, 8, str(fecha_dias.days*24)+' horas'+' Minutos '+str(round(fecha_dias.seconds/60,0))) 
+            sheet.write(filas, 9, ticket[8]) 
             filas += 1
 
         sheet.merge_range('A'+str(filas+1)+':B'+str(filas+1),'TOTAL TICKETS', letter12)
