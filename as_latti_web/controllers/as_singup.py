@@ -10,6 +10,14 @@ class AsAuthSignupHome(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
         values = { key: qcontext.get(key) for key in ('login', 'name', 'password' , 'as_empresa', 'as_tipo_soporte') }
+        #se crea la empresa si no existe y se pasa el id
+        if values != {}:
+            empresa = request.env['as.empresa'].sudo().search([('name','=',values['as_empresa'])])
+            if empresa:
+                values['as_empresa']= empresa.id
+            else:
+                empresa_id = request.env['as.empresa'].sudo().create({'name':values['as_empresa']})
+                values['as_empresa']= empresa_id.id
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
